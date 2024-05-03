@@ -1,0 +1,50 @@
+<%- include("header"); %>
+<div class="box" id="heading">
+
+      <h1><%= ListTitle %> </h1>
+    </div>
+ 
+<!-- make a new one using forEach() -->
+
+    <div class="box " >
+       
+       <form action="/delete" method="post">
+            <% newlyListed.forEach(data=>{ %>
+                <div class="item">
+                    <!-- <button class="checkit" type="reset">x</button> other way is to use onchange attribute -->
+                    <input type="checkbox" name="checkbox" value="<%=data._id%>" onchange="this.form.submit()">
+                    <p><%= data.name %></p>
+                </div>
+                
+                <%  }) %>
+                
+                <input type="hidden" name="listname" value="<%= ListTitle %>">
+
+
+       </form>
+       
+       
+       <!-- above is what i have made for the for looop  -->
+        <!-- <% for(var i = 0; i < newlyListed.length; i++){ %>
+            <div class="item">
+                <input type="checkbox" >
+                <p><%= newlyListed[i].name%></p>
+            </div>
+        <% } %>
+         -->
+        <form action="/" method="post" class="item">
+            <input type="text" name="whatTodo" placeholder="Todo Item" autocomplete="off">
+            <button id="new" type="submit" name="button" value="<%= ListTitle %>">+</button>
+        </form>
+    
+        <!-- <footer style="position: absolute; bottom: 10px;">Made in Gilgit</footer> -->
+    </div>
+
+    <!--  -->
+    <!-- the name and value atribute works mutually : name will be the name of the variable and the value will be the "value identified "  -->
+    <!--  -->
+    
+    
+    <%- include("footer"); %>
+    
+    
